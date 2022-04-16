@@ -1,0 +1,5 @@
+apple 苹果
+banana 香蕉
+ask 询问；要求
+question 问题
+solve 解决
