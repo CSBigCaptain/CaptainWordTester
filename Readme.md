@@ -2,7 +2,7 @@
 
 ## About
 
-The tester is a simple and weak-word tester. But it will get stronger as I grow up!
+The tester is a simple and weak word tester. But it will get stronger as I grow up!
 
 The program was made in Python 3.10.4 (Microsoft Store Edition).
 
