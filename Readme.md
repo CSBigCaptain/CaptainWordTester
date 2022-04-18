@@ -27,9 +27,7 @@ The programe was made in Python 3.10.4(Microsoft Store Edition).
 The project's development is stopped as I have to study in school.But I still collect the advice and bugs of the program.If you have bug or advice,I superbly welcome to open an issue!
 
 I will start the development of the program again in June and release the first Release in August.
-
-<br/>
-
 Thanks and enjoy the project!
+-------
 CSBigCaptain
 2022.4.18 in China
