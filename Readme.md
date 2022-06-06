@@ -6,7 +6,7 @@ The tester is a simple and weak word tester. But it will get stronger as I grow 
 
 The program was made in Python 3.10.4 (Microsoft Store Edition).
 
-## How to use:
+## How to use
 
 - If you want to use the word tester, you must make sure your PC has a Python environment. About how to install Python: this is not within the technical limits of this readme document.
 
