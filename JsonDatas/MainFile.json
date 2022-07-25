@@ -1,0 +1,16 @@
+{
+    "broken" : "破碎的",
+    "hello" : "你好",
+    "Unit 1" : {
+        "jungle" : "丛林",
+        "edge" : "边缘",
+        "pig" : "猪",
+        "Unit": {
+            "apple" : "苹果",
+            "banana" : "香蕉",
+            "pig" : "猪",
+            "jungle" : "丛林",
+            "broken" : "破碎的"
+        }
+    }
+}
