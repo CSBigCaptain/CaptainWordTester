@@ -1,4 +1,4 @@
-#choose_fuctions文件，用来存储交互式界面所需要的函数
+#choose_fuctions文件，用来存储选择功能的功能所需要的函数
 import json
 import change_fuctions
 
@@ -56,6 +56,7 @@ def testModeChoose():
               'Let us choose your mode :',\
               'Press "a": The programe will ask you its meaning and you must answer its word.',\
               'Press "b": You must answer its meaning by its word.',\
+              'Press "c": You can pracice words by the mode.',\
               'Press "q": Break.',\
               'Press "ENTER" to make your answer sure.',sep = '\n')
         answer = input('Your answer:')
@@ -63,8 +64,10 @@ def testModeChoose():
             return 1
         elif answer == 'b':
             return 2
-        elif answer == 'q':
+        elif answer == 'c':
             return 3
+        elif answer == 'q':
+            return 'EXIT'
         else:
             print("WARNING!It isn't allowed,as it wasn't defined! \nYou should input again!")
             continue

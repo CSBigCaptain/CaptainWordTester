@@ -1,8 +1,10 @@
 #核心功能函数
+from itertools import count
 import random , time
+from tkinter import E
 import change_fuctions
 
-def modeA(finalList):
+def askOriginalWords(finalList):
     '''
     根据译义写出原义的模式
     '''
@@ -15,9 +17,8 @@ def modeA(finalList):
     askedLog = open(".\Datas\log.txt", "a+",encoding='utf-8')
     askedLog.write('--------------The Start Line-----------------\nDate and Time：')
     askedLog.write(time.asctime())
-    askedLog.write('\nMode : A (translation => literal meaning)\n------------------------------------------------')
-    print('Done！')
-    print('-----------------------------------------------------')
+    askedLog.write('\nMode : A (translation => literal meaning)\n---------------------------------------------')
+    print('=============')
     while True:
         int = random.randint(0,len(askedList) - 1)
         print('Question %d : %s ' % (questionMEM , askedList[int][1]))
@@ -34,7 +35,7 @@ def modeA(finalList):
             print('*************************')
             print('The test have done.Here is the simple information of the test.',\
                   'And you can see the detailed information of the test in the Log file.')
-            print('\tTotleMember : %d\n\tTrueMember : %d \n\tFalseMember : %d ' % (questionMEM - 1,trueMEM , falseMEM))
+            print('\tTotleMember : %d\n\tTrueMember : %d \n\tFalseMember : %d ' % (questionMEM - 1,trueMEM , falseMEM))           
             askedLog.write('\nSummarize:'\
                            '\nTotleMember : %d\nTrueMember : %d \nFalseMember : %d ' % (questionMEM - 1,trueMEM , falseMEM))
             if (questionMEM - 1) != 0:          #被除数为0会怎么样呢？
@@ -46,6 +47,7 @@ def modeA(finalList):
                               (little[0][0] , little[0][1] , little[1][0] , little[1][1]) )
             askedLog.write('\n------The End Line-------\n\n\n\n\n')
             askedLog.close()
+            print('=============')
             break
         else:
             print('Wrong！You need answer again.We will give the right answer if you are wrong again')
@@ -69,7 +71,7 @@ def modeA(finalList):
                 falseMEM += 1
                 continue
 
-def modeB(finalList):
+def askTranslatedWords(finalList):
     '''
     根据原义写出译义的模式
     '''
@@ -84,9 +86,8 @@ def modeB(finalList):
     askedLog = open(".\Datas\log.txt", "a+", encoding='utf-8')
     askedLog.write('--------------The Start Line-----------------\nTime：')
     askedLog.write(time.asctime())
-    askedLog.write('\nMode : A (English => Chinese)\n------------------------------------------------')
-    print('Done!')
-    print('-----------------------------------------------------')
+    askedLog.write('\nMode : A (English => Chinese)\n-------------------------------------')
+    print('=============')
     print('Warning:The mode is subjective question. You should judge right or not by yourself.')
     while True:
         int = random.randint(0,len(askedList) - 1)
@@ -112,6 +113,7 @@ def modeB(finalList):
                 askedLog.write('\n\t%s %s (Your Answer：%s )' % (little[0][0],little[0][1],little[1]))
             askedLog.write('\n------The End Line-------\n\n\n\n\n')
             askedLog.close()
+            print('=============')
             break
         print('--Your judge was recorded.We will show the standard answer.')
         print('The standard answer is：%s' % askedList[int][1])
@@ -148,3 +150,27 @@ def modeB(finalList):
                 print('ERROR! The answer is not defined! You should answer again!')
                 continue
  
+def practiceMode(finalList):
+    originalList = change_fuctions.keyList(finalList)
+    translatedList = change_fuctions.valueList(finalList)
+    questionMEM = 1
+    print('=============')
+    while True:
+        if questionMEM > len(originalList):
+            break
+        print('The word %d : %s  %s' % (questionMEM , originalList[questionMEM-1][1] , translatedList[questionMEM-1][1]))
+        print('Please input the word rightly:',end='')
+        while True:
+            answer = input()
+            if answer == originalList[questionMEM - 1][1]:
+                questionMEM += 1
+                break
+            if answer == 'q':
+                break
+            else:
+                print('Wrong! Please input again!')
+                continue
+        if answer == 'q':
+            break
+    print('The practice is over.')
+    print('=============')    

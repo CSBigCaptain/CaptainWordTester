@@ -21,9 +21,11 @@ while True:
     while True:
         choose = choose_fuctions.testModeChoose()
         if choose == 1:
-            core_fuctions.modeA(finalList)
+            core_fuctions.askOriginalWords(finalList)
         elif choose == 2:
-            core_fuctions.modeB(finalList)
+            core_fuctions.askTranslatedWords(finalList)
         elif choose == 3:
+            core_fuctions.practiceMode(finalList)
+        elif choose == 'EXIT':
             break
 
