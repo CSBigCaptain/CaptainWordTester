@@ -1,17 +1,16 @@
 #choose_fuctions文件，用来存储选择功能的功能所需要的函数
-import json
 import change_fuctions
 
 def jsonOrTxt():
     while True :
         print('----------------------------------------------',\
               'Choose your reading mode:',\
-              'Press "a" : Json mode.(The programe will read the Json data file)',\
-              'Press "b" : Txt mode. (The programe will read the txt data file)',\
-              'Press "q" : Quit the programe.'
-              'If you done ,you should press "ENTER" .(Yeah,you should do it in the programe every time)',\
+              'Press "a": Json mode.(The programe will read the Json data file)',\
+              'Press "b": Txt mode.(The programe will read the txt data file)',\
+              'Press "q": Quit the programe.',\
+              'If you done ,you should press "ENTER".(Yeah,you should do it in the programe every time)',\
                sep = '\n')
-        judge = input('Yours : ')
+        judge = input('Your answer:')
         if judge == 'a':                                    #Json Files
             return 1
         elif judge == 'b':                                  #Txt Files
@@ -19,7 +18,7 @@ def jsonOrTxt():
         elif judge == 'q':
             return 3
         else:
-            print("WARNING!It isn't allowed,as it wasn't defined! \nYou should input again!")
+            print("WARNING! It isn't allowed,as it wasn't defined! \nYou should input again!")
             continue
 
 def askDict(Dict):
@@ -47,7 +46,7 @@ def askDict(Dict):
             if choose == 'q':
                 return 'EXIT'
             else:
-                print('ERROR!Your input is not defined!')
+                print('ERROR! Your input is not defined!')
     return List[choose - 1][1]
 
 def testModeChoose():
@@ -69,5 +68,5 @@ def testModeChoose():
         elif answer == 'q':
             return 'EXIT'
         else:
-            print("WARNING!It isn't allowed,as it wasn't defined! \nYou should input again!")
+            print("WARNING! It isn't allowed,as it wasn't defined!\nYou should input again!")
             continue
