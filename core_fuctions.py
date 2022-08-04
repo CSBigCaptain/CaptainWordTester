@@ -6,6 +6,8 @@ def askOriginalWords(finalList):
     '''
     根据译义写出原义的模式
     '''
+    if isinstance(finalList , dict) == True:
+        finalList = list(finalList)
     origins = 0             #原义
     translations = 1        #译义
     questionMEM = 1         #题号
@@ -73,6 +75,8 @@ def askTranslatedWords(finalList):
     '''
     根据原义写出译义的模式
     '''
+    if isinstance(finalList , dict) == True:
+        finalList = list(finalList)
     origins = 0
     translations = 1
     questionMEM = 1
