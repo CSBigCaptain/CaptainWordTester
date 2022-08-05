@@ -11,6 +11,7 @@ while True:
         finalDict = read_fuctions.scanCycle(startDict)
         if finalDict == 'EXIT':
             continue
+        finalList = list(finalDict)
     elif choose == 2:
         finalList = read_fuctions.readTxtFile()
         if finalList == 'EXIT':

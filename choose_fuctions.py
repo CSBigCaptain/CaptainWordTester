@@ -5,11 +5,10 @@ def jsonOrTxt():
     while True :
         print('----------------------------------------------',\
               'Choose your reading mode:',\
-              'Press "a": Json mode.(The programe will read the Json data file)',\
-              'Press "b": Txt mode.(The programe will read the txt data file)',\
+              'Press "a": Json mode.(The programe will read the Json file)',\
+              'Press "b": Txt mode.(The programe will read the txt file)',\
               'Press "q": Quit the programe.',\
-              'If you done ,you should press "ENTER".(Yeah,you should do it in the programe every time)',\
-               sep = '\n')
+              'If you done ,you should press "ENTER".(You should do it in the programe every time)',sep = '\n')
         judge = input('Your answer:')
         if judge == 'a':                                    #Json Files
             return 1
@@ -18,14 +17,14 @@ def jsonOrTxt():
         elif judge == 'q':
             return 3
         else:
-            print("WARNING! It isn't allowed,as it wasn't defined! \nYou should input again!")
+            print("Your answer isn't defined! \nPlease input again!")
             continue
 
 def askDict(Dict):
     '''
     scanCycle函数的必要部分
     '''
-    print('Choose a Dict which you want to choose:')
+    print('Choose a Grope which you want to choose:')
     print('Press "q" to return the mode choose page.')
     i = 1
     List = change_fuctions.dictToList(Dict)
@@ -40,24 +39,24 @@ def askDict(Dict):
             if choose > 0 and choose <= len(List):
                 break
             else:
-                print('ERROR! Please input the true answer!')
+                print('Please check and input the true answer!')
                 continue
         except:
             if choose == 'q':
                 return 'EXIT'
             else:
-                print('ERROR! Your input is not defined!')
+                print("Your answer isn't defined!")
     return List[choose - 1][1]
 
 def testModeChoose():
     while True:
         print('----------------------------------------------------------',\
               'Let us choose your mode :',\
-              'Press "a": The programe will ask you its meaning and you must answer its word.',\
-              'Press "b": You must answer its meaning by its word.',\
-              'Press "c": You can pracice words by the mode.',\
+              'Press "a": Guess words by translations!',\
+              'Press "b": Translate words!',\
+              'Press "c": Practise!',\
               'Press "q": Break.',\
-              'Press "ENTER" to make your answer sure.',sep = '\n')
+              'Press "ENTER" to confirm.',sep = '\n')
         answer = input('Your answer:')
         if answer == 'a':
             return 1
@@ -68,5 +67,5 @@ def testModeChoose():
         elif answer == 'q':
             return 'EXIT'
         else:
-            print("WARNING! It isn't allowed,as it wasn't defined!\nYou should input again!")
+            print("Your answer isn't defined!\nPlease input again!")
             continue

@@ -1,13 +1,10 @@
 #核心功能函数
 import random , time
-import change_fuctions
 
 def askOriginalWords(finalList):
     '''
     根据译义写出原义的模式
     '''
-    if isinstance(finalList , dict) == True:
-        finalList = list(finalList)
     origins = 0             #原义
     translations = 1        #译义
     questionMEM = 1         #题号
@@ -17,12 +14,12 @@ def askOriginalWords(finalList):
     askedLog = open(".\Datas\log.txt", "a+",encoding='utf-8')
     askedLog.write('--------------The Start Line-----------------\nDate and Time：')
     askedLog.write(time.asctime())
-    askedLog.write('\nMode: A(translation => literal meaning)\n---------------------------------------------')
+    askedLog.write('\nMode: A(translation => Origins)\n---------------------------------------------')
     print('=============')
     while True:
         int = random.randint(0,len(finalList) - 1)
         print('Question %d: %s' % (questionMEM , finalList[int][translations]))
-        answer1 = input('Your answer:')
+        answer1 = input('Your answer: ')
         if answer1 == finalList[int][origins]:
             askedLog.write('\nQuestion %d: %s' % (questionMEM, finalList[int][origins]))
             askedLog.write('\nAnswer: %s  (True)' % answer1)
@@ -50,7 +47,7 @@ def askOriginalWords(finalList):
             print('=============')
             break
         else:
-            print('Wrong！You need answer again. We will give the right answer if you are wrong again')
+            print('Wrong！You can try again. We will give the key if you wrong again')
             answer2 = input()
             if answer2 == finalList[int][origins]:
                 print('Right''\n-------')
@@ -75,8 +72,6 @@ def askTranslatedWords(finalList):
     '''
     根据原义写出译义的模式
     '''
-    if isinstance(finalList , dict) == True:
-        finalList = list(finalList)
     origins = 0
     translations = 1
     questionMEM = 1
@@ -88,9 +83,9 @@ def askTranslatedWords(finalList):
     askedLog = open(".\Datas\log.txt", "a+", encoding='utf-8')
     askedLog.write('--------------The Start Line-----------------\nTime：')
     askedLog.write(time.asctime())
-    askedLog.write('\nMode: B(literal meaning => translation)\n-------------------------------------')
+    askedLog.write('\nMode: B(Origins => translation)\n-------------------------------------')
     print('=============')
-    print('Warning: The mode is subjective question. You should judge right or not by yourself.')
+    print('Warning: The mode is subjective question. You should judge right or wrong by yourself.')
     while True:
         int = random.randint(0,len(finalList) - 1)
         print('Question %d: %s ' % (questionMEM , finalList[int][origins]))
@@ -119,7 +114,7 @@ def askTranslatedWords(finalList):
         print('--Your judge was recorded.We will show the standard answer.')
         print('--The standard answer is：%s' % finalList[int][translations])
         while True:
-            answer2 = input('Check your answer(Right（“y”）Wrong（“n”）Skip（“ENTER”）):')
+            answer2 = input('Check your answer(Right（“y”）Wrong（“n”）Skip（“ENTER”）): ')
             if answer2 == 'y':
                 askedLog.write('\nQuestion %d: %s' % (questionMEM, finalList[int][origins]))
                 askedLog.write('\nAnswer: %s  (True)' % answer1)
@@ -152,18 +147,18 @@ def askTranslatedWords(finalList):
                 continue
  
 def practiceMode(finalList):
-    originalList = change_fuctions.keyList(finalList)
-    translatedList = change_fuctions.valueList(finalList)
+    origin = 0
+    translation = 1
     questionMEM = 1
     print('=============')
     while True:
-        if questionMEM > len(originalList):
+        if questionMEM > len(finalList):
             break
-        print('The word %d : %s  %s' % (questionMEM , originalList[questionMEM-1][1] , translatedList[questionMEM-1][1]))
-        print('Please input the word rightly:',end='')
+        print('Word %d : %s  %s' % (questionMEM , finalList[questionMEM-1][origin] , finalList[questionMEM-1][translation]))
+        print('Input the word: ',end='')
         while True:
             answer = input()
-            if answer == originalList[questionMEM - 1][1]:
+            if answer == finalList[questionMEM - 1][origin]:
                 questionMEM += 1
                 break
             if answer == 'q':

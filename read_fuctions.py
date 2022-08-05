@@ -61,8 +61,7 @@ def readTxtFile():
     waitList = finalString.split("\n")
     finalList = []
     for little in waitList:
-        print(little)
-        if little == '' or little == ' ' or little == '  ':
+        if little == '' or little == ',' or little == ',,' or little == ',,,':
             continue
         finalList.append(little.split(','))
     return finalList
