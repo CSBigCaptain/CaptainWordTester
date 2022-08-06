@@ -2,16 +2,26 @@
 import json
 import change_fuctions , choose_fuctions
 
+def readSettingsFile():
+    try:
+        file = open('./Datas/SettingsFile.json','r',encoding = 'utf-8')
+    except:
+        return ' '
+    str = file.read()
+    settings = json.loads(str)
+    file.close
+    return settings['ReadingFormat']
+
 def readJsonFile():
     '''读取JSON文件'''
     try:
-        askedFile = open('./JsonDatas/MainFile.json','rt',encoding='utf-8')
+        askedFile = open('./JsonDatas/MainFile.json','rt',encoding = 'utf-8')
     except:
         print('We can"t find the "./JsonDatas/MainFile.txt" file! Please make sure the file is here and try again!')
         return 'EXIT'
     waitString = askedFile.read()
     askedFile.close()
-    dataDict =json.loads(waitString)
+    dataDict = json.loads(waitString)
     return dataDict
 
 def scanCycle(startDict):
@@ -49,7 +59,7 @@ def scanDict(dataDict):
     if judge == [1,0]:
         return [dataDict , 1]           #1就是纯字典喽...
 
-def readTxtFile():
+def readTxtFile(FORMAT):
     try:
         askedFile = open('./TxtDatas/MainFile.txt','rt',encoding='utf-8')
     except:
@@ -57,11 +67,11 @@ def readTxtFile():
         return 'EXIT'       
     waitString = askedFile.read()
     askedFile.close()
-    finalString = waitString.replace(' ',',')
+    finalString = waitString.replace(FORMAT,',')
     waitList = finalString.split("\n")
     finalList = []
     for little in waitList:
-        if little == '' or little == ',' or little == ',,' or little == ',,,':
+        if little == '':
             continue
         finalList.append(little.split(','))
     return finalList

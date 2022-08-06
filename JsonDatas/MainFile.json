@@ -10,7 +10,9 @@
             "banana" : "香蕉",
             "pig" : "猪",
             "jungle" : "丛林",
-            "broken" : "破碎的"
+            "broken" : "破碎的",
+            "edge" : "边缘",
+            "hello" : "你好"
         }
     }
 }
