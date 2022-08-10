@@ -36,8 +36,8 @@ def askOriginalWords(finalList):
             askedLog.write('\nSummarize:'\
                            '\nTotleMember: %d\nTrueMember: %d \nFalseMember: %d ' % (questionMEM - 1,trueMEM , falseMEM))
             if (questionMEM - 1) != 0:          #被除数为0会怎么样呢？
-                print('\tCorrect rate: %.2f' % (trueMEM/(questionMEM - 1)))
-                askedLog.write('\nCorrect rate: %.2f' % (trueMEM/(questionMEM - 1)))
+                print('\tCorrect rate: %.4f' % (trueMEM/(questionMEM - 1)))
+                askedLog.write('\nCorrect rate: %.4f' % (trueMEM/(questionMEM - 1)))
             askedLog.write('\nWrong Words:')  #错误回答的问题写入到日志中
             for little in wrongWords:
                 askedLog.write('\n\t%s %s (Your answer：%s %s)' %
@@ -100,8 +100,8 @@ def askTranslatedWords(finalList):
                             '\nTotleMember: %d\nTrueMember: %d\nFalseMember: %d\nUnknownMember: %d' \
                                  % (questionMEM - 1, trueMEM, falseMEM, unknownMEM))
             if (questionMEM - 1) != 0:                  #被除数为0会怎么样呢？
-                print('Correct rate: %.2f' % (trueMEM/(questionMEM - 1)))
-                askedLog.write('\nCorrect rate: %.2f' % (trueMEM/(questionMEM - 1)))
+                print('Correct rate: %.4f' % (trueMEM/(questionMEM - 1)))
+                askedLog.write('\nCorrect rate: %.4f' % (trueMEM/(questionMEM - 1)))
             askedLog.write('\nWrong Questions:')      #错误回答的问题写入到日志中
             for little in wrongQuestions:
                 askedLog.write('\n\t%s %s (Your Answer：%s )' % (little[0][0],little[0][1],little[1]))

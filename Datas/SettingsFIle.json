@@ -1,3 +1,4 @@
 {
-    "ReadingFormat" : "\t"
+    "ReadingFormat" : "\t",
+    "WrongListNotify" : 0
 }

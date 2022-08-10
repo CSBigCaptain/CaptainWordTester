@@ -2,7 +2,8 @@ import choose_fuctions , read_fuctions , core_fuctions
 import sys
 
 
-FORMAT = read_fuctions.readSettingsFile()
+FORMAT = read_fuctions.readSettingsFile('ReadingFormat')
+WRONGLISTNOTIFY = read_fuctions.readSettingsFile('WrongListNotify')
 while True:
     choose = choose_fuctions.jsonOrTxt()
     if choose == 1:
@@ -14,7 +15,7 @@ while True:
             continue
         finalList = list(finalDict)
     elif choose == 2:
-        finalList = read_fuctions.readTxtFile(FORMAT)
+        finalList = read_fuctions.readTxtFile(FORMAT , WRONGLISTNOTIFY)
         if finalList == 'EXIT':
             continue
     elif choose == 3:

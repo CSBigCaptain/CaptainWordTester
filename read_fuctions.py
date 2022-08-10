@@ -2,15 +2,15 @@
 import json
 import change_fuctions , choose_fuctions
 
-def readSettingsFile():
+def readSettingsFile(settings_str):
     try:
         file = open('./Datas/SettingsFile.json','r',encoding = 'utf-8')
+        str = file.read()
+        settings = json.loads(str)
+        file.close()
     except:
-        return ' '
-    str = file.read()
-    settings = json.loads(str)
-    file.close
-    return settings['ReadingFormat']
+        settings = { "ReadingFormat" : "\t","WrongListNotify" : 1 }
+    return settings[settings_str]
 
 def readJsonFile():
     '''读取JSON文件'''
@@ -59,7 +59,7 @@ def scanDict(dataDict):
     if judge == [1,0]:
         return [dataDict , 1]           #1就是纯字典喽...
 
-def readTxtFile(FORMAT):
+def readTxtFile(FORMAT , WRONGLISTNOTIFY):
     try:
         askedFile = open('./TxtDatas/MainFile.txt','rt',encoding='utf-8')
     except:
@@ -67,11 +67,22 @@ def readTxtFile(FORMAT):
         return 'EXIT'       
     waitString = askedFile.read()
     askedFile.close()
-    finalString = waitString.replace(FORMAT,',')
-    waitList = finalString.split("\n")
+    waitList = waitString.split("\n")
     finalList = []
     for little in waitList:
-        if little == '':
-            continue
-        finalList.append(little.split(','))
+        finalList.append(little.split(FORMAT))
+    i = 0
+    wrongList = []
+    for little in finalList:            #通过检查列表中的元素数量的方式，寻找不合格的数据
+        if len(little) != 2:
+           wrongList.append([i,little])
+        i += 1
+    wrongList = wrongList[ : :-1]       #为什么要把列表倒序，是需要耐心领会的
+    for little in wrongList:            #删除不符合格式的数据
+        finalList.pop(little[0])
+    wrongList = wrongList[ : :-1]       #再倒序回来是为了打印的时候更符合常人的阅读习惯
+    if len(wrongList) > 0 and WRONGLISTNOTIFY == 1:
+        print('These datas have problems when reading the file. In order to avoid bugs, we have ignored it.')
+        for little in wrongList:
+            print('The line:',little[0]+1,little[1],sep=' ')
     return finalList
