@@ -1,0 +1,9 @@
+
+apple	苹果
+banana	香蕉
+ask	询问；要求
+pear梨
+question	问题
+solve	解决
+environment	环境
+
