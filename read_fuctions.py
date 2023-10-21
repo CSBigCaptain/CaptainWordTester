@@ -1,5 +1,5 @@
 #读取文件所需要的函数
-import json
+import json , os
 import change_fuctions , choose_fuctions
 
 def readSettingsFile(settings_str):
@@ -12,19 +12,22 @@ def readSettingsFile(settings_str):
         settings = { "ReadingFormat" : "\t","WrongListNotify" : 1 }
     return settings[settings_str]
 
-def readJsonFile():
+def readJsonFile(fileName):
     '''读取JSON文件'''
+    dir = './NewDatas/' + fileName
     try:
-        askedFile = open('./JsonDatas/MainFile.json','rt',encoding = 'utf-8')
+        askedFile = open(dir ,'rt',encoding = 'utf-8')
     except:
-        print('We can"t find the "./JsonDatas/MainFile.txt" file! Please make sure the file is here and try again!')
-        return 'EXIT'
+        print('Fail to find the file, please check the file and try it again!')
+        return 'BREAK'
     waitString = askedFile.read()
     askedFile.close()
     dataDict = json.loads(waitString)
-    return dataDict
+    finalList = scanCycle(dataDict)
+    return finalList
 
 def scanCycle(startDict):
+    '''处理读取JSON文件产生的字典'''
     while True:
         judgeList = scanDict(startDict)
         if judgeList[1] == 0:
@@ -59,9 +62,10 @@ def scanDict(dataDict):
     if judge == [1,0]:
         return [dataDict , 1]           #1就是纯字典喽...
 
-def readTxtFile(FORMAT , WRONGLISTNOTIFY):
+def readTxtFile(fileName , FORMAT , WRONGLISTNOTIFY):
+    dir = './NewDatas/' + fileName
     try:
-        askedFile = open('./TxtDatas/MainFile.txt','rt',encoding='utf-8')
+        askedFile = open(dir ,'rt' , encoding='utf-8')
     except:
         print('We can"t find the "./TxtDatas/MainFile.txt" file! Please make sure the file is here and try again!')
         return 'EXIT'       
@@ -82,7 +86,41 @@ def readTxtFile(FORMAT , WRONGLISTNOTIFY):
         finalList.pop(little[0])
     wrongList = wrongList[ : :-1]       #再倒序回来是为了打印的时候更符合常人的阅读习惯
     if len(wrongList) > 0 and WRONGLISTNOTIFY == 1:
-        print('These datas have problems when reading the file. In order to avoid bugs, we have ignored it.')
+        print('These datas may have problems. In order to avoid errors, we ignored them.')
         for little in wrongList:
             print('The line:',little[0]+1,little[1],sep=' ')
     return finalList
+
+def readDatasFiles():
+    while True:
+        dirList = os.listdir('./NewDatas')
+        print('Choose your files from these files.\nUse "r" to rechoose.\nUse "q" to back.')
+        mem = 1
+        for i in dirList:
+            print(mem , dirList[mem - 1] , sep=' ')
+            mem += 1
+        try:
+            memOfList = input ()
+            if memOfList == 'r':
+                continue
+            if memOfList == 'q':
+                continue
+            memOfList = int(memOfList)
+            fileName = dirList[memOfList - 1]
+        except IndexError:
+            print('')
+            continue
+        list = fileName.split('.')
+        fileType = list[-1]
+        if fileType == 'json':
+            a = readJsonFile(fileName)          #如果没有成功读取到JSON文件，则要求用户重新选择文件
+            if a == 'BREAK':
+                continue
+            else:
+                return a
+        FORMAT = readSettingsFile('ReadingFormat')
+        WRONGLISTNOTIFY = readSettingsFile('WrongListNotify') 
+        if fileType == 'txt':
+            return readTxtFile(fileName , FORMAT , WRONGLISTNOTIFY)
+        
+        

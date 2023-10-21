@@ -1,25 +1,6 @@
 #choose_fuctions文件，用来存储选择功能的功能所需要的函数
 import change_fuctions
 
-def jsonOrTxt():
-    while True :
-        print('----------------------------------------------',\
-              'Choose your reading mode:',\
-              'Press "a": Json mode.(The programe will read the Json file)',\
-              'Press "b": Txt mode.(The programe will read the txt file)',\
-              'Press "q": Quit the programe.',\
-              'If you done ,you should press "ENTER".(You should do it in the programe every time)',sep = '\n')
-        judge = input('Your answer:')
-        if judge == 'a':                                    #Json Files
-            return 1
-        elif judge == 'b':                                  #Txt Files
-            return 2
-        elif judge == 'q':
-            return 3
-        else:
-            print("Your answer isn't defined! \nPlease input again!")
-            continue
-
 def askDict(Dict):
     '''
     scanCycle函数的必要部分
@@ -48,24 +29,4 @@ def askDict(Dict):
                 print("Your answer isn't defined!")
     return List[choose - 1][1]
 
-def testModeChoose():
-    while True:
-        print('----------------------------------------------------------',\
-              'Let us choose your mode :',\
-              'Press "a": Guess words by translations!',\
-              'Press "b": Translate words!',\
-              'Press "c": Practise!',\
-              'Press "q": Break.',\
-              'Press "ENTER" to confirm.',sep = '\n')
-        answer = input('Your answer:')
-        if answer == 'a':
-            return 1
-        elif answer == 'b':
-            return 2
-        elif answer == 'c':
-            return 3
-        elif answer == 'q':
-            return 'EXIT'
-        else:
-            print("Your answer isn't defined!\nPlease input again!")
-            continue
+
