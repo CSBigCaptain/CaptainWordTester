@@ -1,10 +1,13 @@
-import choose_fuctions , read_fuctions , core_fuctions , modules
-import sys
+from colorama import Fore, init
 
-finalList = []
+import core_fuctions
+import modules
+
+init()  # colorama模块初始化
+finalList = modules.addTestList()
 while True:
-    finalList = modules.addOrRefresh(finalList)
-    print(finalList)
+    print(finalList + '+++')
+    finalList = modules.addTestList(0, finalList)
     while True:
         choose = modules.testModeChoose()
         if choose == 1:

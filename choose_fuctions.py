@@ -1,5 +1,9 @@
 #choose_fuctions文件，用来存储选择功能的功能所需要的函数
+from colorama import Fore, init
+
 import change_fuctions
+
+init()  # colorama模块初始化
 
 def askDict(Dict):
     '''
@@ -10,23 +14,24 @@ def askDict(Dict):
     i = 1
     List = change_fuctions.dictToList(Dict)
     for little in List:
-        print('%d : %s.' % (i , little[0]))
+        print(f'{i}: {little[0]}')
         i += 1
-    while True:                     #判定输入的字符是否合法
-        choose = input('Input its ID then press "ENTER":')
-        #这个地方使用try的原因：如果输入为非数字（比如按Q键是退出），就会报错。
-        try:
+
+    print('---- Input its ID then press "ENTER":', end='')
+    while True:
+        choose = input('')
+        if choose.isdigit():
             choose = int(choose)
             if choose > 0 and choose <= len(List):
                 break
             else:
-                print('Please check and input the true answer!')
+                print(Fore.RED + 'Warning: Please input true ID!' + Fore.RESET)
                 continue
-        except:
+        else:
             if choose == 'q':
                 return 'EXIT'
             else:
-                print("Your answer isn't defined!")
+                print(Fore.RED + "Warning: Your answer isn't defined!" + Fore.RESET)
     return List[choose - 1][1]
 
 

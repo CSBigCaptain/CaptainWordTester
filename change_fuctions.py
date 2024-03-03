@@ -1,9 +1,9 @@
 #change_fuctions文件用来存储转换函数
 
 def dictToList(finalDict):
-    '''
+    """
     将字典转换为列表
-    '''
+    """
     finalList = []
     startList = finalDict.items()
     for object in startList:
@@ -23,9 +23,9 @@ def valueList(list):
     return List
 
 def keyList(list):
-    '''
+    """
     keyList函数：将列表的子列表(key , value)转换为（数字：key）的形式
-    '''
+    """
     i = 1
     List = []
     for littleList in list:

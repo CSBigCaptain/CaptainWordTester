@@ -6,4 +6,8 @@ pear梨
 question	问题
 solve	解决
 environment	环境
+small,小的
+big 大的
+
+
 
